@@ -61,7 +61,7 @@ Route::get('/news', function () {
         <body class="firstpage">
             <h1>Новости</h1>
             <br/>
-            <h3>Содержание новостей</h3>
+            <h3>Содержание новостей на сайте </h3>
         </body>
     </html>
     php;
