@@ -8,6 +8,9 @@
 </head>
 <body class="authpage">
     <h1>страница авторизации</h1>
+    <br>
+    <?php include_once "menu.php"; ?>
+    <br>
     <form>
         <label for="login">Логин:</label><br>
         <input type="text" id="login" name="login"><br>

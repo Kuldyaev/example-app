@@ -7,7 +7,10 @@
         <title>Домашняя</title>
     </head>
     <body class="firstpage">
-        <h1>Добавление новости</h1><br><br>
+        <h1>Добавление новости</h1><br>
+        <br>
+        <?php include_once "menu.php"; ?>
+        <br>
         <form>
             <label for="category">Категория:</label><br>
             <input type="text" id="category" name="category"><br>
