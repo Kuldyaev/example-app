@@ -28,10 +28,9 @@ class NewsController extends Controller
         return view('showAllNews')->with('news',$news);
     }
 
-    public function categories():string
+    public function categories(Categories $categories):string
     {
-        $categories = Categories::getAll();
-        return view('categories')->with('categories',$categories);
+        return view('categories')->with('categories',$categories->getAll());
     }
 
     public function showOneCategory($category_id):string

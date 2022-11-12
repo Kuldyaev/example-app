@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Categories
 {
-    private static $categories = [
+    private $categories = [
         1 => [
             'id' => 1,
             'name' => 'Бизнес'
@@ -27,8 +27,8 @@ class Categories
         ]
     ];
 
-    public static function getAll():array
+    public function getAll():array
     {
-        return self::$categories;
+        return $this->categories;
     }
 }
