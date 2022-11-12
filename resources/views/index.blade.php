@@ -9,7 +9,7 @@
         <body class="firstpage">
             <h2><i>Приветствуем Вас на домашней странице нашего агрегатора новостей</i></h2>
             <br>
-            <?php include_once "menu.php"; ?>
+@include('menu')
             <h3>Данный проект разрабатывается в рамках курса Laravel от GeekBrains</h3>
         </body>
     </html>

@@ -1,6 +1,7 @@
-<h2><i>Новости одной категории</i></h2>
+<h2>Все новости</h2>
 <br>
-<?php include_once "menu.php"; ?>
+@include('menu')
+<br>
 <br>
 <?php foreach ($news as $item): ?>
     <a href="/news/showOne/<?=$item['id']?>"><?=$item['title']?></a><br>

@@ -1,6 +1,6 @@
 <h1>Добавление новости</h1><br>
 <br>
-<?php include_once "menu.php"; ?>
+@include('menu')
 <br>
 <form>
     <label for="category">Категория:</label><br>

@@ -1,4 +1,3 @@
-<php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 <body class="authpage">
     <h1>страница авторизации</h1>
     <br>
-    <?php include_once "menu.php"; ?>
+@include('menu')
     <br>
     <form>
         <label for="login">Логин:</label><br>
@@ -21,4 +20,4 @@
         <input type="submit" value="Submit">
     </form>
 </body>
-    </html>
+</html>

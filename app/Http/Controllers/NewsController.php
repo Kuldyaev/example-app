@@ -8,34 +8,26 @@ use App\Models\News;
 class NewsController extends Controller
 {
     public function addOne(){
-        return view('addOne');
+        return view('news.addOne');
     }
 
     public function showOne($id, News $news)
     {
-        if ( $news->getNewsById($id) == null ){
-            return view('page404');
-        } else {
-            return view('showOne')->with('news',$news->getNewsById($id));
-        }
+        return view('news.showOne')->with('news',$news->getNewsById($id));
     }
 
     public function showAllNews(News $news):string
     {
-        return view('showAllNews')->with('news',$news->getAllNews());
+        return view('news.showAllNews')->with('news',$news->getAllNews());
     }
 
     public function categories(Categories $categories):string
     {
-        return view('categories')->with('categories',$categories->getAll());
+        return view('news.categories')->with('categories',$categories->getAll());
     }
 
     public function showOneCategory($category_id, Categories $categories, News $news):string
     {
-        if ( $news->getNewsByCategory($category_id) == null ){
-            return view('categories')->with('categories',$categories->getAll());
-        } else {
-            return view('showOneCategory')->with('news',$news->getNewsByCategory($category_id));
-        }
+        return view('news.showOneCategory')->with('news',$news->getNewsByCategory($category_id));
     }
 }

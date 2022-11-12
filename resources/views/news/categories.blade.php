@@ -1,6 +1,6 @@
 <h2>Категории новостей</h2>
 <br>
-<?php include_once "menu.php"; ?>
+@include('menu')
 <br>
 <br>
 <?php foreach ($categories as $category): ?>
