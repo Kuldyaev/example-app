@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Categories
 {
-    private $categories = [
+    private array $categories = [
         1 => [
             'id' => 1,
             'name' => 'Бизнес'

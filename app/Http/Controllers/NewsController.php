@@ -11,21 +11,18 @@ class NewsController extends Controller
         return view('addOne');
     }
 
-    public function showOne($id)
+    public function showOne($id, News $news)
     {
-        $news = News::getNewsById($id);
-        if ( $news == null ){
-            $categories = Categories::getAll();
-            return view('categories')->with('categories',$categories);
+        if ( $news->getNewsById($id) == null ){
+            return view('page404');
         } else {
-            return view('showOne')->with('news',$news);
+            return view('showOne')->with('news',$news->getNewsById($id));
         }
     }
 
-    public function showAllNews():string
+    public function showAllNews(News $news):string
     {
-        $news = News::getAllNews();
-        return view('showAllNews')->with('news',$news);
+        return view('showAllNews')->with('news',$news->getAllNews());
     }
 
     public function categories(Categories $categories):string
@@ -33,14 +30,12 @@ class NewsController extends Controller
         return view('categories')->with('categories',$categories->getAll());
     }
 
-    public function showOneCategory($category_id):string
+    public function showOneCategory($category_id, Categories $categories, News $news):string
     {
-        $news = News::getNewsByCategory($category_id);
-        if ( $news == null ){
-            $categories = Categories::getAll();
-            return view('categories')->with('categories',$categories);
+        if ( $news->getNewsByCategory($category_id) == null ){
+            return view('categories')->with('categories',$categories->getAll());
         } else {
-            return view('showOneCategory')->with('news',$news);
+            return view('showOneCategory')->with('news',$news->getNewsByCategory($category_id));
         }
     }
 }
