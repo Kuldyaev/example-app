@@ -6,7 +6,10 @@
         <title>@section('title')Страница @show</title>
     </head>
     <body class="antialiased">
+        <h1>ПОРТАЛ НОВОСТЕЙ</h1>
+        <br>
 @yield('menu')
+        <br>
 @yield('content')
     </body>
 </html>
