@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent | Авторизация
+@parent | Авторизация
 @endsection
 
 @section('menu')

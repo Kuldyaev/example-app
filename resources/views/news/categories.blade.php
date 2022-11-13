@@ -11,6 +11,6 @@
 @section('content')
     <br>
     @foreach ($categories as $category)
-        <a href="/news/categories/<?=$category['id']?>"><?=$category['name']?></a><br>
+        <a href="{{ route('news.categories.showOneCategory', $category['id']) }}">{{ $category['name'] }}</a><br>
     @endforeach
 @endsection

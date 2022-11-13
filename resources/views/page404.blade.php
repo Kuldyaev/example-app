@@ -1,11 +1,7 @@
-@include('menu')
-<h3>page 404</h3>
-
-
 @extends('layouts.main')
 
 @section('title')
-    @parent | 404
+@parent | 404
 @endsection
 
 @section('menu')
