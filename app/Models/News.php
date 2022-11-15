@@ -182,7 +182,7 @@ class News
         $newsByCatecory = [];
         foreach ($this->news as $news){
             if ($news['category_id'] == $category_id){
-                array_push($newsByCatecory, $news);
+                $newsByCatecory[]= $news;
             }
         }
         if (count($newsByCatecory) > 0){
