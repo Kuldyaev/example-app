@@ -1,7 +1,15 @@
-<h1>Добавление новости</h1><br>
-<br>
-<?php include_once "menu.php"; ?>
-<br>
+@extends('layouts.main')
+
+@section('title')
+@parent | Добавить новость
+@endsection
+
+@section('menu')
+    @include('menu')
+@endsection
+
+@section('content')
+<h2><i>Добавление новости</i></h2><br>
 <form>
     <label for="category">Категория:</label><br>
     <input type="text" id="category" name="category"><br>
@@ -13,3 +21,4 @@
     <input type="text" id="textInfo" name="textInfo"><br><br>
     <input type="submit" value="Submit">
 </form>
+@endsection

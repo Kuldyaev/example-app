@@ -8,40 +8,26 @@ use App\Models\News;
 class NewsController extends Controller
 {
     public function addOne(){
-        return view('addOne');
+        return view('news.addOne');
     }
 
-    public function showOne($id)
+    public function showOne($id, News $news)
     {
-        $news = News::getNewsById($id);
-        if ( $news == null ){
-            $categories = Categories::getAll();
-            return view('categories')->with('categories',$categories);
-        } else {
-            return view('showOne')->with('news',$news);
-        }
+        return view('news.showOne')->with('news',$news->getNewsById($id));
     }
 
-    public function showAllNews():string
+    public function showAllNews(News $news):string
     {
-        $news = News::getAllNews();
-        return view('showAllNews')->with('news',$news);
+        return view('news.showAllNews')->with('news',$news->getAllNews());
     }
 
-    public function categories():string
+    public function categories(Categories $categories):string
     {
-        $categories = Categories::getAll();
-        return view('categories')->with('categories',$categories);
+        return view('news.categories')->with('categories',$categories->getAll());
     }
 
-    public function showOneCategory($category_id):string
+    public function showOneCategory($category_id, Categories $categories, News $news):string
     {
-        $news = News::getNewsByCategory($category_id);
-        if ( $news == null ){
-            $categories = Categories::getAll();
-            return view('categories')->with('categories',$categories);
-        } else {
-            return view('showOneCategory')->with('news',$news);
-        }
+        return view('news.showOneCategory')->with('news',$news->getNewsByCategory($category_id));
     }
 }
