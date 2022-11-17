@@ -1,19 +1,9 @@
-@extends('layouts.main')
-
-@section('title')
-@parent | Авторизация
-@endsection
-
-@section('menu')
-@include('menu')
-@endsection
-
-@section('content')
-    <div class="container">
+<div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
+                        <h4>TEST 2</h4>
                         <br>
                         <form>
                             <label for="login">Логин:</label><br>
@@ -29,4 +19,3 @@
             </div>
         </div>
     </div>
-@endsection
