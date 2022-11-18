@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -13,9 +14,11 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-    public function test1()
+    public function test1(News $news)
     {
-        return  view('admin.test1');
+        return response()->json($news->getNews())
+            ->header('Content-Disposition', 'attachment; filename = "news.txt"')
+            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
 
     public function test2()
