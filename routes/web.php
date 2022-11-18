@@ -33,7 +33,7 @@ Route::name('admin.')
         Route::get('/', [AdminIndexController::class, 'index'])->name('index');
         Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
-        Route::get('/create', [AdminIndexController::class, 'create'])->name('create');
+        Route::match(['get','post'],'/create', [AdminIndexController::class, 'create'])->name('create');
 });
 
 
