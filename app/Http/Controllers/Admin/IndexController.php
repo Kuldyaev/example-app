@@ -16,7 +16,7 @@ class IndexController extends Controller
 
     public function test1(News $news)
     {
-        return response()->json($news->getNews())
+        return response()->json($news->getAllNews())
             ->header('Content-Disposition', 'attachment; filename = "news.txt"')
             ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
