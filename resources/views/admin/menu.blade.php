@@ -5,7 +5,9 @@
     <a href="{{ route('admin.create') }}" class="nav-link {{ request()->routeIs('admin.create')?' active':'' }}" style="text-decoration: none">Создать новость &nbsp;</a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.test1') }}" class="nav-link {{ request()->routeIs('admin.test1')?' active':'' }}" style="text-decoration: none">Скачать текст &nbsp;</a>
+    
+      <my-menu></my-menu>
+
 </li>
 <li class="nav-item">
     <a href="{{ route('admin.test2') }}" class="nav-link {{ request()->routeIs('admin.test2')?' active':'' }}" style="text-decoration: none">Скачать картинку &nbsp;</a>
