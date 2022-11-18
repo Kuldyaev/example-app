@@ -36,7 +36,14 @@ Route::name('admin.')
         Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
         Route::match(['get','post'],'/create', [AdminIndexController::class, 'create'])->name('create');
-});
+        Route::name('download.')
+            ->prefix('download')
+            ->group(function(){
+                Route::get('/news', [AdminIndexController::class, 'downloadNews'])->name('downloadNews');
+                Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('downloadCategories');
+            });    
+        }
+    );
 
 
 

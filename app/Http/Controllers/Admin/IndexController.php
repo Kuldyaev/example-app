@@ -14,17 +14,20 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-   // public function test1(News $news)
-   // {
-  //      return response()->json($news->getAllNews())
-  //          ->header('Content-Disposition', 'attachment; filename = "news.txt"')
-  //          ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-  //  }
-
-    public function test1(){
-        return view('admin.index');
+   public function downloadNews(News $news)
+   {
+       return response()->json($news->getAllNews())
+            ->header('Content-Disposition', 'attachment; filename = "news.txt"')
+           ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
 
+    public function downloadCategories(Categories $category)
+   {
+       return response()->json($category->getAll())
+            ->header('Content-Disposition', 'attachment; filename = "categories.txt"')
+           ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    }
+  
     public function test2()
     {
         return  response()->download('22.jpg');

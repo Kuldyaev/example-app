@@ -6,9 +6,8 @@
             </a>
         </div>
         <ul  v-if="isShow" style="display:block" class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Действие</a></li>
-            <li><a class="dropdown-item" href="#">Другое действие</a></li>
-            <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+            <li><a href="./admin/download/news" class="dropdown-item">Скачать новости</a></li>
+            <li><a href="./admin/download/categories" class="dropdown-item">Скачать категории</a></li>
         </ul>
     </div>    
 </template>
