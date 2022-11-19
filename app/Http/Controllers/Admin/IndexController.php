@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -39,7 +40,7 @@ class IndexController extends Controller
         } 
 
         return  view('admin.download');
-     }
+    }
   
     public function mydownload( Categories $category)
     {
@@ -51,12 +52,23 @@ class IndexController extends Controller
         return  response()->download('22.jpg');
     }
 
-    public function create(Request $request, Categories $category)
+    public function create(Request $request, News $news, Categories $category)
     {
         if ($request->isMethod('post')){
-            
-            $request->flash();
-            return redirect()->route('admin.create');
+            $oldNews = $news->getAllNews();
+            $oldNews[] = [
+                "title" => $request->title,
+                "textInfo" => $request->textInfo,
+                "shortDescription" => $request->shortDescription,
+                "isPrivate" => isset($request->isPrivate),
+                "newsCategory" => (int)$request->newsCategory
+            ];
+            $id = array_key_last($oldNews);
+            $oldNews[$id]['id'] = $id;
+            Storage::disk('local')->put('news.json', json_encode($oldNews, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+            $activePage = $id;
+           
+            return redirect()->route('news.showOne', [$id]);
         }
         
         return  view('admin.create', ['categories' => $category->getAll()]);
