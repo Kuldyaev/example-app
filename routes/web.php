@@ -39,8 +39,9 @@ Route::name('admin.')
         Route::name('download.')
             ->prefix('download')
             ->group(function(){
-                Route::get('/news', [AdminIndexController::class, 'downloadNews'])->name('downloadNews');
-                Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('downloadCategories');
+                Route::get('/', [AdminIndexController::class, 'mydownload'])->name('download');
+                Route::get('/news', [AdminIndexController::class, 'downloadNews'])->name('news');
+                Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('categories');
             });    
         }
     );

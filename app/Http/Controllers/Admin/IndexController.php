@@ -28,6 +28,11 @@ class IndexController extends Controller
            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
   
+    public function mydownload( Categories $category)
+    {
+        return  view('admin.download', ['categories' => $category->getAll()]);
+    }
+
     public function test2()
     {
         return  response()->download('22.jpg');
