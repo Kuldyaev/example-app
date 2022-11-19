@@ -27,17 +27,17 @@
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <a href="{{ route('admin.download.news') }}" style="text-decoration: none">
-                                                Скачать все нововсти в JSON
+                                            <a href="{{ route('admin.download.json.news') }}" style="text-decoration: none">
+                                                Скачать все новости в JSON
                                             </a>
                                         </li>
                                         <li class="list-group-item">
-                                            <a href="{{ route('admin.download.categories') }}" style="text-decoration: none">
+                                            <a href="{{ route('admin.download.json.categories') }}" style="text-decoration: none">
                                                 Скачать категории новостей в JSON
                                             </a>
                                         </li>
                                         <li class="list-group-item">
-                                        <form action="{{ route('admin.create') }}" method="post">
+                                        <form action="{{ route('admin.download.json.category') }}" method="post">
                                                 @csrf
                                                 
                                                 <div class="form-group">
@@ -55,6 +55,11 @@
                                                     <input type="submit"  class="btn btn-outline-secondary" value="Скачать новости выбранной категории" >
                                                 </div>
                                             </form>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="{{ route('admin.download.excel.news') }}" style="text-decoration: none">
+                                                Скачать все новости в Excel
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

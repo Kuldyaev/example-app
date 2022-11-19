@@ -27,6 +27,19 @@ class IndexController extends Controller
             ->header('Content-Disposition', 'attachment; filename = "categories.txt"')
            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
+
+    public function downloadOneCategory(Request $request, News $news)
+    {
+        if ($request->isMethod('post'))
+        {
+            $currCategory = $request['newsCategory'];
+            return response()->json($news->getNewsByCategory($currCategory ))
+            ->header('Content-Disposition', 'attachment; filename = "newsOneCategory.txt"')
+           ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        } 
+
+        return  view('admin.download');
+     }
   
     public function mydownload( Categories $category)
     {

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\News;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\ExportBasic;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NewsController extends Controller
 {
@@ -35,4 +37,9 @@ class NewsController extends Controller
     //public function save(Categories $categories){
     //    Storage::disk('local')->put('categories.json', json_encode($categories->getAll(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
    // }
+
+   public function exportBasic() 
+   {
+    return Excel::download(new ExportBasic, 'news-all.xlsx');
+   }
 }

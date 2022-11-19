@@ -40,8 +40,21 @@ Route::name('admin.')
             ->prefix('download')
             ->group(function(){
                 Route::get('/', [AdminIndexController::class, 'mydownload'])->name('download');
-                Route::get('/news', [AdminIndexController::class, 'downloadNews'])->name('news');
-                Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('categories');
+                Route::name('json.')
+                    ->prefix('json')
+                    ->group(function(){
+                        Route::get('/news', [AdminIndexController::class, 'downloadNews'])->name('news');
+                        Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('categories');
+                        Route::match(['get','post'],'/category', [AdminIndexController::class, 'downloadOneCategory'])->name('category');
+                    });
+                    Route::name('excel.')
+                    ->prefix('excel')
+                    ->group(function(){
+                        Route::get('/news', [NewsController::class, 'exportBasic'])->name('news');
+                    //    Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('categories');
+                    //    Route::match(['get','post'],'/category', [AdminIndexController::class, 'downloadOneCategory'])->name('category');
+                    });
+            
             });    
         }
     );
@@ -51,3 +64,4 @@ Route::name('admin.')
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+// Route::get('exportBasic', [NewsController::class, 'exportBasic']);
