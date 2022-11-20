@@ -2,7 +2,6 @@
 
 namespace App\Exports;
 
-//use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\FromArray;
 
