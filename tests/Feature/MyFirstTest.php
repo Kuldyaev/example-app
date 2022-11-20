@@ -41,7 +41,8 @@ class MyFirstTest extends TestCase
                    'isPrivate',
                    'title',
                    'shortDescription',
-                   'textInfo'
+                   'textInfo',
+                   'category_id'
                ]
              ]
         );

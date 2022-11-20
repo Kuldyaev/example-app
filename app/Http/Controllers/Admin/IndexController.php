@@ -61,7 +61,7 @@ class IndexController extends Controller
                 "textInfo" => $request->textInfo,
                 "shortDescription" => $request->shortDescription,
                 "isPrivate" => isset($request->isPrivate),
-                "newsCategory" => (int)$request->newsCategory
+                "category_id" => (int)$request->newsCategory
             ];
             $id = array_key_last($oldNews);
             $oldNews[$id]['id'] = $id;
