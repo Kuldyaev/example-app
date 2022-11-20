@@ -1,5 +1,5 @@
-<li class="nav-item"><a href="{{ route('home') }}" class="link-secondary">Главная</a></li>
-<li class="nav-item"><a href="{{ route('news.categories.all') }}" class="link-secondary">Категории новостей</a></li>
-<li class="nav-item"><a href="{{ route('news.showAllNews') }}" class="link-secondary">Все новости</a></li>
-<li class="nav-item"><a href="{{ route('news.addOne') }}" class="link-secondary">Добавить новость</a></li>
-<li class="nav-item"><a href="{{ route('auth') }}" class="link-secondary">Авторизация</a></li>
+<li class="nav-item"><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home')?' active':'' }} " style="text-decoration: none">Главная &nbsp;</a></li>
+<li class="nav-item"><a href="{{ route('news.categories.all') }}" class="nav-link {{ request()->routeIs('news.categories.all')?' active':'' }}" style="text-decoration: none">Категории новостей &nbsp;</a></li>
+<li class="nav-item"><a href="{{ route('news.showAllNews') }}" class="nav-link {{ request()->routeIs('news.showAllNews')?' active':'' }}" style="text-decoration: none">Все новости &nbsp;</a></li>
+<li class="nav-item"><a href="{{ route('news.addOne') }}" class="nav-link {{ request()->routeIs('news.addOne')?' active':'' }}" style="text-decoration: none">Добавить новость &nbsp;</a></li>
+<li class="nav-item"><a href="{{ route('auth') }}" class="nav-link {{ request()->routeIs('auth')?' active':'' }}" style="text-decoration: none">Авторизация &nbsp;</a></li>

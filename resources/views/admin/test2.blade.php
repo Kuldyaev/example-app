@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('title')
-@parent | 404
+@parent | Админка
 @endsection
 
 @section('menu')
-@include('menu')
+@include('admin.menu')
 @endsection
 
 @section('content')
@@ -14,10 +14,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                    <br>
-                        <h3>page 404</h3>
-                        <br>
-                        <h5>страница не существует</h5>
+                        <h4>TEST2</h4>
                     </div>
                 </div>
             </div>

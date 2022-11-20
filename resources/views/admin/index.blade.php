@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('title')
-@parent | Авторизация
+@parent | Админка
 @endsection
 
 @section('menu')
-@include('menu')
+@include('admin.menu')
 @endsection
 
 @section('content')
