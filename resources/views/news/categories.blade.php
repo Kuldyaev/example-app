@@ -17,7 +17,10 @@
                         <h3>Категории новостей:</h3>
                         <br>
                         @foreach ($categories as $category)
-                            <a href="{{ route('news.categories.showOneCategory', $category['id']) }}">{{ $category['name'] }}</a><br>
+                            <a href="{{ route('news.categories.showOneCategory', $category['id']) }}" style="display:flex;">
+                                <img src="{{ asset($category['img']) }}" style="height: 30px;" alt="My Happy SVG" />
+                                <div  style="margin-left: 10px;">{{ $category['name'] }}</div>
+                            </a><br>
                         @endforeach
                     </div>
                 </div>
