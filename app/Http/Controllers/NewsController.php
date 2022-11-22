@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\News;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Exports\ExportBasic;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,9 +25,11 @@ class NewsController extends Controller
         return view('news.showAllNews')->with('news',$news->getAllNews());
     }
 
-    public function categories(Categories $categories):string
+    public function categories()
     {
-        return view('news.categories')->with('categories',$categories->getAll());
+        $categories = DB::table('categories')->get();
+        
+        return view('news.categories')->with('categories',$categories);
     }
 
     public function showOneCategory($category_id, News $news):string
