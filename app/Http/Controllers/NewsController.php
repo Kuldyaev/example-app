@@ -15,14 +15,17 @@ class NewsController extends Controller
         return view('news.addOne');
     }
 
-    public function showOne($id, News $news)
+    public function showOne($id)
     {
-        return view('news.showOne')->with('news',$news->getNewsById($id));
+        $news = DB::table('news')->find($id);
+       
+        return view('news.showOne')->with('news',$news);
     }
 
-    public function showAllNews(News $news):string
+    public function showAllNews(News $news)
     {
-        return view('news.showAllNews')->with('news',$news->getAllNews());
+        $news = DB::table('news')->get();
+        return view('news.showAllNews')->with('news',$news);
     }
 
     public function categories()
@@ -32,9 +35,10 @@ class NewsController extends Controller
         return view('news.categories')->with('categories',$categories);
     }
 
-    public function showOneCategory($category_id, News $news):string
+    public function showOneCategory($category_id)
     {
-        return view('news.showOneCategory')->with('news',$news->getNewsByCategory($category_id));
+        $news = DB::table('news')->where('category_id', $category_id)->get();
+        return view('news.showOneCategory')->with('news',$news);
     }
 
     //public function save(Categories $categories){

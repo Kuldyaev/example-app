@@ -18,8 +18,8 @@
                         <br>
                         @if ($news)
                             @foreach ($news as $item)
-                                <a href="{{ route('news.showOne', $item['id']) }}">{{ $item['title'] }}</a>
-                                <p><i>{{ $item['shortDescription'] }}</i></p><br>
+                                <a href="{{ route('news.showOne', $item->id) }}">{{ $item->title }}</a>
+                                <p><i>{{ $item->shortDescription }}</i></p><br>
                             @endforeach
                         @else
                             <br>
