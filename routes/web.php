@@ -26,8 +26,6 @@ Route::name('news.')
             });
 });
 
-//  Route::get('/save', [NewsController::class, 'save'])->name('save');
-
 Route::name('admin.')
     ->prefix('admin')
     ->namespace('Admin')
@@ -64,4 +62,3 @@ Route::name('admin.')
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-// Route::get('exportBasic', [NewsController::class, 'exportBasic']);

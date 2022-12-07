@@ -15,10 +15,10 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($news)
-                            <h2>{{ $news['title'] }}</h2>
-                            <h3><i>{{ $news['shortDescription'] }}</i></h3>
+                            <h2>{{ $news->title }}</h2>
+                            <h3><i>{{ $news->shortDescription }}</i></h3>
                             <br>
-                            <p>{{ $news['textInfo'] }}</p>
+                            <p>{{ $news->textInfo }}</p>
                         @else
                             <br>
                             <p> нет такой новости </p>
