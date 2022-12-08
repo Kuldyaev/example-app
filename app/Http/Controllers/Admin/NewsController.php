@@ -18,27 +18,40 @@ class NewsController extends Controller
 
     ///блок CRUD для новостей
 
-    public function create(Request $request, News $news, Categories $category)
+    public function create(Request $request)
     {
-        if ($request->isMethod('post')){
-            $oldNews = $news->getAllNews();
-            $oldNews[] = [
-                "title" => $request->title,
-                "textInfo" => $request->textInfo,
-                "shortDescription" => $request->shortDescription,
-                "isPrivate" => isset($request->isPrivate),
-                "category_id" => (int)$request->newsCategory
-            ];
-            $id = array_key_last($oldNews);
-            $oldNews[$id]['id'] = $id;
-            Storage::disk('local')->put('news.json', json_encode($oldNews, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-            $activePage = $id;
-            
-            return redirect()->route('news.showOne', [$id])->with('success', 'Новость успешно добавлена!');
+        $news = new News();
+
+        if ($request->isMethod('post')) {
+            $news->fill($request->all());
+            $news->save();
+            return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость успешно добавлена!');
         }
-        
-        $categories = Category::all();
-        //dd($categories);
-        return  view('admin.create')->with('categories', $categories);
+        return view('admin.create', [
+            'news' => $news,
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function edit(News $news) {
+        return view('admin.create', [
+            'news' => $news,
+            'categories' => Category::all()
+        ]);
+    }
+
+    
+    public function update(Request $request, News $news) {
+
+        $news->fill($request->all());
+        $news->isPrivate = isset($request->isPrivate);
+        $news->save();
+        return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость успешно изменена!');
+    }
+
+
+    public function destroy(News $news) {
+        $news->delete();
+        return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость удалена успешно!');
     }
 }

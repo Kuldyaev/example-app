@@ -14,13 +14,21 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Добавление новости</div>
+                    <div class="card-header">
+                        <h2>
+                            @if ($news->id)
+                                Изменение новости
+                            @else
+                                Добавление новости
+                            @endif
+                        </h2>
+                    </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.create') }}" method="post">
+                        <form action="@if (!$news->id){{ route('admin.create') }}@else{{ route('admin.update', $news) }}@endif " method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="title">Название:</label><br>
-                                <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
+                                <input type="text" id="title" name="title" class="form-control" value="{{ $news->title ?? old('title') }}">
                             </div>    
                             <div class="form-group">
                                 <label for="category">Категория:</label><br>
@@ -35,18 +43,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="shortDescription">Краткое описание:</label><br>
-                                <input type="text" id="shortDescription" name="shortDescription" class="form-control" value="{{ old('shortDescription') }}">
+                                <input type="text" id="shortDescription" name="shortDescription" class="form-control" value="{{ $news->shortDescription ?? old('shortDescription') }}">
                             </div>
                             <div class="form-group">
                                 <label for="textInfo">Текст новости:</label><br>
-                                <input type="text" id="textInfo" name="textInfo" class="form-control" value="{{ old('textInfo') }}">
+                                <input type="text" id="textInfo" name="textInfo" class="form-control" value="{{ $news->textInfo ?? old('textInfo') }}">
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" id="newsPrivate" name="isPrivate" class="form-check-input" value="1" @if (old('isPrivate') == '1') checked @endif>
+                                <input type="checkbox" id="newsPrivate" name="isPrivate" class="form-check-input" value="1" 
+                                @if ($news->isPrivate == 1 || old('isPrivate') == 1) checked @endif>
                                 <label for="newPrivate">Приватная</label><br>
                             </div>
                             <div class="form-group">
-                                <input type="submit"  class="btn btn-outline-secondary" value="Добавить новость" >
+                                <input type="submit"  class="btn btn-outline-secondary" value="@if ($news->id) edit news @else add news @endif" >
                             </div>
                         </form>
                     </div>

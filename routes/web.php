@@ -60,6 +60,9 @@ Route::name('admin.')
         
         Route::get('/showAllNews', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
         Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
+        Route::get('/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
+        Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
+        Route::delete('/destroy/{news}', [AdminNewsController::class, 'destroy'])->name('destroy');
         }
     );
 
