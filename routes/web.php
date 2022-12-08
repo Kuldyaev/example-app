@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -30,9 +31,9 @@ Route::name('admin.')
     ->namespace('Admin')
     ->group(function(){
         Route::get('/', [AdminIndexController::class, 'index'])->name('index');
+        Route::get('/showAllNews', [AdminIndexController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
         Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
-        Route::match(['get','post'],'/create', [AdminIndexController::class, 'create'])->name('create');
         Route::name('download.')
             ->prefix('download')
             ->group(function(){
@@ -52,7 +53,13 @@ Route::name('admin.')
                     //    Route::match(['get','post'],'/category', [AdminIndexController::class, 'downloadOneCategory'])->name('category');
                     });
             
-            });    
+            });  
+            
+           // CRUD operation 
+           
+        
+        Route::get('/showAllNews', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
+        Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
         }
     );
 

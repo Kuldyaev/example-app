@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -11,10 +11,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class NewsController extends Controller
 {
-    public function addOne(){
-        return view('news.addOne');
-    }
-
     public function showOne(News $news)
     {
         //$news = DB::table('news')->find($id);
@@ -26,23 +22,23 @@ class NewsController extends Controller
     public function showAllNews()
     {
        // $news = DB::table('news')->get();
-       $news = News::all();
+       $news = News::where('isPrivate', false)->get();
         return view('news.showAllNews')->with('news',$news);
     }
 
     public function categories()
     {
         //$categories = DB::table('categories')->get();
-        $categories = Categories::all();
+        $categories = Category::all();
         //dump($categories);
         return view('news.categories')->with('categories',$categories);
     }
 
     public function showOneCategory($category_id)
     {
-        //$news = DB::table('news')->where('category_id', $category_id)->get();
-        $news = News::query()->where('category_id',$category_id)->get();
-        dump($news);
+        // $news = DB::table('news')->where('category_id', $category_id)->get();
+        $news = News::where('category_id',$category_id)->get();
+        // dump($news);
         return view('news.showOneCategory')->with('news',$news);
     }
 

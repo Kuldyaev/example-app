@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class News extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'shortDescription', 'textInfo', 'isPrivate', 'category_id'];
 }
