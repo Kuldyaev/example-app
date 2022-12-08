@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -55,14 +56,23 @@ Route::name('admin.')
             
             });  
             
-           // CRUD operation 
-           
+        // CRUD operation           
         
         Route::get('/showAllNews', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
         Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
         Route::get('/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
         Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
         Route::delete('/destroy/{news}', [AdminNewsController::class, 'destroy'])->name('destroy');
+
+        Route::name('categories.')
+            ->prefix('categories')
+            ->group(function(){
+                Route::get('/', [AdminCategoryController::class, 'showAllCategoryForAdmin'])->name('showAllCategoryForAdmin');
+                Route::match(['get','post'],'/create', [AdminCategoryController::class, 'create'])->name('create');
+                Route::get('/edit/{category}', [AdminCategoryController::class, 'edit'])->name('edit');
+                Route::post('/update/{category}', [AdminCategoryController::class, 'update'])->name('update');
+                Route::delete('/destroy/{category}', [AdminCategoryController::class, 'destroy'])->name('destroy');
+            });
         }
     );
 

@@ -9,8 +9,8 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.create') }}" class="nav-link {{ request()->routeIs('admin.create')?' active':'' }}" style="text-decoration: none">
-        Создать новость &nbsp;
+    <a href="{{ route('admin.categories.showAllCategoryForAdmin') }}" class="nav-link {{ request()->routeIs('admin.categories.showAllCategoryForAdmin')?' active':'' }}" style="text-decoration: none">
+        Категории новостей &nbsp;
     </a>
 </li>
 <li class="nav-item"> 
