@@ -7,6 +7,7 @@ use App\Models\Categories;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -44,7 +45,9 @@ class IndexController extends Controller
   
     public function mydownload( Categories $category)
     {
-        return  view('admin.download', ['categories' => $category->getAll()]);
+        $categories = Categories::all();
+
+        return  view('admin.download')->with('categories', $categories);
     }
 
     public function test2()
@@ -68,9 +71,11 @@ class IndexController extends Controller
             Storage::disk('local')->put('news.json', json_encode($oldNews, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
             $activePage = $id;
            
-            return redirect()->route('news.showOne', [$id]);
+            return redirect()->route('news.showOne', [$id])->with('success', 'Новость успешно добавлена!');
         }
         
-        return  view('admin.create', ['categories' => $category->getAll()]);
+        $categories = Categories::all();
+        //dd($categories);
+        return  view('admin.create')->with('categories', $categories);
     }
 }

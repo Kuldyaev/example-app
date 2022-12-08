@@ -15,29 +15,34 @@ class NewsController extends Controller
         return view('news.addOne');
     }
 
-    public function showOne($id)
+    public function showOne(News $news)
     {
-        $news = DB::table('news')->find($id);
+        //$news = DB::table('news')->find($id);
+       // $news = News::query()->find($id);
        
         return view('news.showOne')->with('news',$news);
     }
 
-    public function showAllNews(News $news)
+    public function showAllNews()
     {
-        $news = DB::table('news')->get();
+       // $news = DB::table('news')->get();
+       $news = News::all();
         return view('news.showAllNews')->with('news',$news);
     }
 
     public function categories()
     {
-        $categories = DB::table('categories')->get();
-        
+        //$categories = DB::table('categories')->get();
+        $categories = Categories::all();
+        //dump($categories);
         return view('news.categories')->with('categories',$categories);
     }
 
     public function showOneCategory($category_id)
     {
-        $news = DB::table('news')->where('category_id', $category_id)->get();
+        //$news = DB::table('news')->where('category_id', $category_id)->get();
+        $news = News::query()->where('category_id',$category_id)->get();
+        dump($news);
         return view('news.showOneCategory')->with('news',$news);
     }
 

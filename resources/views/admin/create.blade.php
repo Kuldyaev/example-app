@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -24,6 +25,7 @@
                             <div class="form-group">
                                 <label for="category">Категория:</label><br>
                                 <select type="text" id="category" name="newsCategory" class="form-control">
+                                  
                                     @forelse($categories as $item)
                                         <option @if ($item['id'] == old('newsCategory')) selected @endif  value="{{ $item['id'] }}" >{{ $item['name'] }}</option>
                                     @empty

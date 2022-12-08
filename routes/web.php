@@ -13,9 +13,8 @@ Route::get('/auth', [AuthController::class, 'index'])->name('auth');
 Route::name('news.')
     ->prefix('news')
     ->group(function(){
-        Route::get('/addOne', [NewsController::class, 'addOne'])->name('addOne');
         Route::get('/showAll', [NewsController::class, 'showAllNews'])->name('showAllNews');
-        Route::get('/showOne/{id}', [NewsController::class, 'showOne'])->name('showOne');
+        Route::get('/showOne/{news}', [NewsController::class, 'showOne'])->name('showOne');
         Route::name('categories.')
             ->prefix('categories')
             ->group(function(){
