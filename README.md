@@ -4,3 +4,5 @@ NewsPortal
 
 
 still under construction
+
+ lesson 7 now
