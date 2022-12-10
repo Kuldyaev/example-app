@@ -4,7 +4,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.showAllNewsForAdmin') }}" class="nav-link {{ request()->routeIs('admin.showAllNewsForAdmin')?' active':'' }}" style="text-decoration: none">
+    <a href="{{ route('admin.news.showAllNewsForAdmin') }}" class="nav-link {{ request()->routeIs('admin.news.showAllNewsForAdmin')?' active':'' }}" style="text-decoration: none">
         Все новости &nbsp;
     </a>
 </li>

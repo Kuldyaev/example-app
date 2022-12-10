@@ -24,7 +24,7 @@
                         </h2>
                     </div>
                     <div class="card-body">
-                        <form action="@if (!$news->id){{ route('admin.create') }}@else{{ route('admin.update', $news) }}@endif " method="post">
+                        <form action="@if (!$news->id){{ route('admin.news.create') }}@else{{ route('admin.news.update', $news) }}@endif " method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="title">Название:</label><br>

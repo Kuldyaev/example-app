@@ -58,11 +58,16 @@ Route::name('admin.')
             
         // CRUD operation           
         
-        Route::get('/showAllNews', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
-        Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
-        Route::get('/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
-        Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
-        Route::delete('/destroy/{news}', [AdminNewsController::class, 'destroy'])->name('destroy');
+
+        Route::name('news.')
+            ->prefix('news')
+            ->group(function(){
+                Route::get('/', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
+                Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
+                Route::get('/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
+                Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
+                Route::delete('/destroy/{news}', [AdminNewsController::class, 'destroy'])->name('destroy');
+            });
 
         Route::name('categories.')
             ->prefix('categories')

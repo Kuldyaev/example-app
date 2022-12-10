@@ -25,7 +25,7 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $news->fill($request->all());
             $news->save();
-            return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость успешно добавлена!');
+            return redirect()->route('admin.news.showAllNewsForAdmin')->with('success', 'Новость успешно добавлена!');
         }
         return view('admin.create', [
             'news' => $news,
@@ -46,12 +46,12 @@ class NewsController extends Controller
         $news->fill($request->all());
         $news->isPrivate = isset($request->isPrivate);
         $news->save();
-        return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость успешно изменена!');
+        return redirect()->route('admin.news.showAllNewsForAdmin')->with('success', 'Новость успешно изменена!');
     }
 
 
     public function destroy(News $news) {
         $news->delete();
-        return redirect()->route('admin.showAllNewsForAdmin')->with('success', 'Новость удалена успешно!');
+        return redirect()->route('admin.news.showAllNewsForAdmin')->with('success', 'Новость удалена успешно!');
     }
 }
