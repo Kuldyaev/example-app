@@ -5,4 +5,4 @@ NewsPortal
 
 still under construction
 
- lesson 7 now
+ lesson 7 now  routes with resources
