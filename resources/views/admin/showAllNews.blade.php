@@ -27,7 +27,7 @@
                         @foreach ($news as $item)
                         <div class="singlenewsplace" style="width:100%; display: flex; justify-content:space-between; border: 1px solid grey; margin-bottom: 2px;" >
                             <div style="display: flex; flex-direction: column">
-                                <a href="{{ route('news.showOne', $item->id) }}">{{ $item->title }}</a>
+                                <a href="{{ route('admin.news.show', $item->id) }}">{{ $item->title }}</a>
                                 <p><i>{{ $item->shortDescription }}</i></p><br>
                             </div>
                             <div>

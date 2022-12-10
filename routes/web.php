@@ -29,7 +29,6 @@ Route::name('news.')
 
 Route::name('admin.')
     ->prefix('admin')
-    ->namespace('Admin')
     ->group(function(){
         Route::get('/', [AdminIndexController::class, 'index'])->name('index');
         Route::get('/showAllNews', [AdminIndexController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
@@ -50,40 +49,16 @@ Route::name('admin.')
                     ->prefix('excel')
                     ->group(function(){
                         Route::get('/news', [NewsController::class, 'exportBasic'])->name('news');
-                    //    Route::get('/categories', [AdminIndexController::class, 'downloadCategories'])->name('categories');
-                    //    Route::match(['get','post'],'/category', [AdminIndexController::class, 'downloadOneCategory'])->name('category');
                     });
             
             });  
             
         // CRUD operation           
-        
-
-        Route::name('news.')
-            ->prefix('news')
-            ->group(function(){
-                Route::get('/', [AdminNewsController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
-                Route::match(['get','post'],'/create', [AdminNewsController::class, 'create'])->name('create');
-                Route::get('/edit/{news}', [AdminNewsController::class, 'edit'])->name('edit');
-                Route::post('/update/{news}', [AdminNewsController::class, 'update'])->name('update');
-                Route::delete('/destroy/{news}', [AdminNewsController::class, 'destroy'])->name('destroy');
-            });
-
-        Route::name('categories.')
-            ->prefix('categories')
-            ->group(function(){
-                Route::get('/', [AdminCategoryController::class, 'showAllCategoryForAdmin'])->name('showAllCategoryForAdmin');
-                Route::match(['get','post'],'/create', [AdminCategoryController::class, 'create'])->name('create');
-                Route::get('/edit/{category}', [AdminCategoryController::class, 'edit'])->name('edit');
-                Route::post('/update/{category}', [AdminCategoryController::class, 'update'])->name('update');
-                Route::delete('/destroy/{category}', [AdminCategoryController::class, 'destroy'])->name('destroy');
-                Route::get('/{slug}', [AdminCategoryController::class, 'show'])->name('show');
-                
-            });
-        }
-    );
-
-
+        Route::resources([
+            'news'=> AdminNewsController::class,
+            'categories'=>AdminCategoryController::class
+        ]);
+    });
 
 Auth::routes();
 

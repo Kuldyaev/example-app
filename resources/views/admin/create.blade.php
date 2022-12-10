@@ -24,8 +24,9 @@
                         </h2>
                     </div>
                     <div class="card-body">
-                        <form action="@if (!$news->id){{ route('admin.news.create') }}@else{{ route('admin.news.update', $news) }}@endif " method="post">
+                        <form action="@if (!$news->id){{ route('admin.news.store') }}@else{{ route('admin.news.update', $news) }}@endif "  method="post">
                             @csrf
+                            <input type="hidden" name="_method" value="@if ($news->id){{ 'PUT' }}@endif">
                             <div class="form-group">
                                 <label for="title">Название:</label><br>
                                 <input type="text" id="title" name="title" class="form-control" value="{{ $news->title ?? old('title') }}">

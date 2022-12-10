@@ -4,12 +4,12 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.news.showAllNewsForAdmin') }}" class="nav-link {{ request()->routeIs('admin.news.showAllNewsForAdmin')?' active':'' }}" style="text-decoration: none">
+    <a href="{{ route('admin.news.index') }}" class="nav-link {{ request()->routeIs('admin.news.index')?' active':'' }}" style="text-decoration: none">
         Все новости &nbsp;
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.categories.showAllCategoryForAdmin') }}" class="nav-link {{ request()->routeIs('admin.categories.showAllCategoryForAdmin')?' active':'' }}" style="text-decoration: none">
+    <a href="{{ route('admin.categories.index') }}" class="nav-link {{ request()->routeIs('admin.categories.index')?' active':'' }}" style="text-decoration: none">
         Категории новостей &nbsp;
     </a>
 </li>

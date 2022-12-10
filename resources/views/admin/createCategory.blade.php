@@ -24,8 +24,10 @@
                         </h2>
                     </div>
                     <div class="card-body">
-                        <form action="@if (!$category->id){{ route('admin.categories.create') }}@else{{ route('admin.categories.update', $category) }}@endif " method="post">
+                        <form action="@if (!$category->id){{ route('admin.categories.store') }}@else{{ route('admin.categories.update', $category) }}@endif " 
+                              method="post">
                             @csrf
+                            <input type="hidden" name="_method" value="@if ($category->id){{ 'PUT' }}@endif">
                             <div class="form-group">
                                 <label for="title">Название категории:</label><br>
                                 <input type="text" id="name" name="name" class="form-control" value="{{ $category->name ?? old('name') }}">

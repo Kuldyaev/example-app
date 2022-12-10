@@ -10,21 +10,19 @@ use App\Models\News;
 
 class CategoryController extends Controller
 {
-    public function showAllCategoryForAdmin()
+    public function index()
     {
         return view('admin.showAllCategories')->with('categories', Category::all());
     }
 
     public function show($slug) {
-
-        //TODO извлеките новости категории через отношения
         $category = Category::query()->where('slug', $slug)->first();
-        
+        //dd($category);
         $news = Category::query()->find(1)->news();
         //dd($news);
         return view('news.showOneCategory')
-            ->with('news', $news)
-            ->with('category', $category->name);
+            ->with('news', $news);
+   
     }
 
     ///блок CRUD для категорий
@@ -32,15 +30,16 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $category = new Category();
+        return view('admin.createCategory', ['category' => $category]);
+    }
 
-        if ($request->isMethod('post')) {
-            $category->fill($request->all());
-            $category->save();
-            return redirect()->route('admin.categories.showAllCategoryForAdmin')->with('success', 'Категория успешно добавлена!');
-        }
-        return view('admin.createCategory', [
-            'category' => $category,
-        ]);
+    public function store(Request $request)
+    {
+        $category = new Category();
+        $category->fill($request->all());
+        $category->save();
+        return redirect()->route('admin.categories.index')->with('success', 'Категория успешно добавлена!');
+
     }
 
     public function edit(Category $category) {
@@ -48,15 +47,14 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, Category $category) {
-
         $category->fill($request->all());
         $category->save();
 
-        return redirect()->route('admin.categories.showAllCategoryForAdmin')->with('success', 'Новость успешно изменена!');
+        return redirect()->route('admin.categories.index')->with('success', 'Категория успешно изменена!');
     }
 
     public function destroy(Category $category) {
         $category->delete();
-        return redirect()->route('admin.categories.showAllCategoryForAdmin')->with('success', 'Категория удалена успешно!');
+        return redirect()->route('admin.categories.index')->with('success', 'Категория удалена успешно!');
     }
 }
