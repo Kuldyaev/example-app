@@ -77,6 +77,8 @@ Route::name('admin.')
                 Route::get('/edit/{category}', [AdminCategoryController::class, 'edit'])->name('edit');
                 Route::post('/update/{category}', [AdminCategoryController::class, 'update'])->name('update');
                 Route::delete('/destroy/{category}', [AdminCategoryController::class, 'destroy'])->name('destroy');
+                Route::get('/{slug}', [AdminCategoryController::class, 'show'])->name('show');
+                
             });
         }
     );
