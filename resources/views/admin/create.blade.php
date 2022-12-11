@@ -29,6 +29,13 @@
                             <input type="hidden" name="_method" value="@if ($news->id){{ 'PUT' }}@endif">
                             <div class="form-group">
                                 <label for="title">Название:</label><br>
+                                @if ($errors->has('title'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('title') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="title" name="title" class="form-control" value="{{ $news->title ?? old('title') }}">
                             </div>    
                             <div class="form-group">
@@ -44,10 +51,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="shortDescription">Краткое описание:</label><br>
+                                @if ($errors->has('shortDescription'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('shortDescription') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="shortDescription" name="shortDescription" class="form-control" value="{{ $news->shortDescription ?? old('shortDescription') }}">
                             </div>
                             <div class="form-group">
                                 <label for="textInfo">Текст новости:</label><br>
+                                @if ($errors->has('textInfo'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('textInfo') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="textInfo" name="textInfo" class="form-control" value="{{ $news->textInfo ?? old('textInfo') }}">
                             </div>
                             <div class="form-check">
