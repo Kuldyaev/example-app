@@ -17,15 +17,13 @@ class CategoryController extends Controller
 
     public function show($slug) {
         $category = Category::query()->where('slug', $slug)->first();
-        //dd($category);
+
         $news = Category::query()->find(1)->news();
-        //dd($news);
+
         return view('news.showOneCategory')
             ->with('news', $news);
    
     }
-
-    ///блок CRUD для категорий
 
     public function create(Request $request)
     {
@@ -36,8 +34,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
-        $category->fill($request->all());
-        $category->save();
+
+        $this->validate($request,[
+            'name'=>'required|min:3|max:20', 
+            'slug'=>'required|min:3|max:15', 
+            'img'=>'required|min:3', 
+        ],[],[
+                'name'=>'Название категории', 
+                'slug'=>'Slug', 
+                'img'=>'Cсылка на изображение', 
+        ]);
+
+        $category->fill($request->all())->save() ;
+
         return redirect()->route('admin.categories.index')->with('success', 'Категория успешно добавлена!');
 
     }
