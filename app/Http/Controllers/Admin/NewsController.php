@@ -31,21 +31,21 @@ class NewsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, News $news)
     {
-        $news = new News();
-
+        $tableNameCategory = (new Category())->getTable();
+        
         $this->validate($request,[
             'title'=>'required|min:3|max:20', 
             'shortDescription'=>'required|min:3|max:250', 
             'textInfo'=>'required|min:3', 
             'isPrivate'=>'sometimes|in:1', 
-            'category_id'=>'required'
+            'category_id'=>'required|exists:{$tableNameCategory},id'
         ],[],[
-                'title'=>'Заголовок новости', 
-                'shortDescription'=>'Краткое описание', 
-                'textInfo'=>'Текст новости', 
-                'category_id'=>'Название категории'
+            'title'=>'Заголовок новости', 
+            'shortDescription'=>'Краткое описание', 
+            'textInfo'=>'Текст новости', 
+            'category_id'=>'Название категории'
         ]);
         $news->fill($request->all());
         $news->save();
@@ -62,6 +62,21 @@ class NewsController extends Controller
 
     
     public function update(Request $request, News $news) {
+        $tableNameCategory = (new Category())->getTable();
+        
+        $this->validate($request,[
+            'title'=>'required|min:3|max:20', 
+            'shortDescription'=>'required|min:3|max:250', 
+            'textInfo'=>'required|min:3', 
+            'isPrivate'=>'sometimes|in:1', 
+            'category_id'=>'required|exists:{$tableNameCategory},id'
+        ],[],[
+            'title'=>'Заголовок новости', 
+            'shortDescription'=>'Краткое описание', 
+            'textInfo'=>'Текст новости', 
+            'category_id'=>'Название категории'
+        ]);
+
 
         $news->fill($request->all());
         $news->isPrivate = isset($request->isPrivate);
