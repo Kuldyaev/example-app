@@ -29,6 +29,7 @@ Route::name('news.')
 
 Route::name('admin.')
     ->prefix('admin')
+    ->middleware('auth')
     ->group(function(){
         Route::get('/', [AdminIndexController::class, 'index'])->name('index');
         Route::get('/showAllNews', [AdminIndexController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
