@@ -16,3 +16,10 @@
 <li class="nav-item"> 
     <my-menu></my-menu>
 </li>
+@auth
+<li class="nav-item">
+    <a href="{{ route('admin.updateProfile') }}" class="nav-link {{ request()->routeIs('admin.updateProfile')?' active':'' }}" style="text-decoration: none">
+       Профиль &nbsp;
+    </a>
+</li>
+@endauth

@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -53,7 +54,8 @@ Route::name('admin.')
                     });
             
             });  
-            
+        Route::match(['get','post'],'/profile', [AdminProfileController::class,'update'] )->name('updateProfile');
+
         // CRUD operation           
         Route::resources([
             'news'=> AdminNewsController::class,
