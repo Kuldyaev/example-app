@@ -22,4 +22,9 @@
        Профиль &nbsp;
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('admin.users') }}" class="nav-link {{ request()->routeIs('admin.users')?' active':'' }}" style="text-decoration: none">
+        Пользователи &nbsp;
+    </a>
+</li>
 @endauth

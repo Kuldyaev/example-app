@@ -15,7 +15,12 @@
 </li>
 @auth
 <li class="nav-item">
-    <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index')?' active':'' }}" style="text-decoration: none">
+    <a href="{{ route('user.profile') }}" class="nav-link {{ request()->routeIs('user.profile')?' active':'' }}" style="text-decoration: none">
+        Профиль &nbsp;
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ route('auth') }}" class="nav-link {{ request()->routeIs('auth')?' active':'' }}" style="text-decoration: none">
         АдминПанель &nbsp;
     </a>
 </li>

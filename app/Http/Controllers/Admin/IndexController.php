@@ -54,4 +54,9 @@ class IndexController extends Controller
     {
         return  response()->download('22.jpg');
     }
+
+    public function users()
+    {
+        return view('admin.users');
+    }
 }

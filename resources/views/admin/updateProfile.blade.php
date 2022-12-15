@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('title', 'Профиль')
+@section('title')
+@parent | Профиль
+@endsection
 
-@section ('menu')
-    @include('admin.menu')
+@section('menu')
+@include('admin.menu')
 @endsection
 
 @section('content')
