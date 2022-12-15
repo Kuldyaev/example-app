@@ -2,7 +2,4 @@
 
 NewsPortal 
 
-
-still under construction
-
  lesson 8 now  
