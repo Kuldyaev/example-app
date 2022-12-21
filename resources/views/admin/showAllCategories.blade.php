@@ -27,7 +27,7 @@
                         @foreach ($categories as $item)
                         <div class="singlenewsplace" style="width:100%; display: flex; justify-content:space-between; border: 1px solid grey; margin-bottom: 2px;" >
                             <div style="display: flex; flex-direction: column">
-                                <a href="{{ route('news.categories.all', $item->id) }}">{{ $item->name }}</a>
+                                <a href="{{ route('admin.categories.show', $item->slug) }}">{{ $item->name }}</a>
                             </div>
                             <div>
                                 <form action="{{ route('admin.categories.destroy', $item) }}" method="post" style="margin-top: 10px;"> 

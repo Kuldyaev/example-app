@@ -24,18 +24,41 @@
                         </h2>
                     </div>
                     <div class="card-body">
-                        <form action="@if (!$category->id){{ route('admin.categories.create') }}@else{{ route('admin.categories.update', $category) }}@endif " method="post">
+                        <form action="@if (!$category->id){{ route('admin.categories.store') }}@else{{ route('admin.categories.update', $category) }}@endif " 
+                              method="post">
                             @csrf
+                            <input type="hidden" name="_method" value="@if ($category->id){{ 'PUT' }}@endif">
                             <div class="form-group">
-                                <label for="title">Название категории:</label><br>
+                                <label for="name">Название категории:</label><br>
+                                @if ($errors->has('name'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('name') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="name" name="name" class="form-control" value="{{ $category->name ?? old('name') }}">
                             </div>    
                             <div class="form-group">
                                 <label for="shortDescription">Слаг:</label><br>
+                                @if ($errors->has('slug'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('slug') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="slug" name="slug" class="form-control" value="{{ $category->slug ?? old('slug') }}">
                             </div>
                             <div class="form-group">
                                 <label for="shortDescription">ссылка на изображение:</label><br>
+                                @if ($errors->has('img'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('img') as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="text" id="img" name="img" class="form-control" value="{{ $category->img ?? old('img') }}">
                             </div>
                             <div class="form-group" style="margin-top: 10px;">
