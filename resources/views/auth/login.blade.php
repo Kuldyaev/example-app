@@ -64,6 +64,10 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div>
+                            <a href="{{ route('vkLogin') }}"><img src="vk.png" width="40" alt=""></a>
+                        </div>
                     </form>
                 </div>
             </div>

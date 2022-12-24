@@ -13,27 +13,27 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'name'=>'Бизнес',
-                'img'=>'storage/img/business.svg',
+                'img'=>'img/business.svg',
                 'slug'=>'business'
             ],
             [
                 'name'=>'Общество',
-                'img'=>'storage/img/politics.svg',
+                'img'=>'img/politics.svg',
                 'slug'=>'sociality'
             ],
             [
                 'name'=>'Спорт',
-                'img'=>'storage/img/sport.svg',
+                'img'=>'img/sport.svg',
                 'slug'=>'sport'
             ],
             [
                 'name'=>'Культура',
-                'img'=>'storage/img/culture.svg',
+                'img'=>'img/culture.svg',
                 'slug'=>'culture'
             ],
             [
                 'name'=>'Наука',
-                'img'=>'storage/img/science.svg',
+                'img'=>'img/science.svg',
                 'slug'=>'science'
             ]
         ]);

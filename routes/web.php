@@ -7,10 +7,16 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\LoginController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/auth', [AuthController::class, 'index'])->name('auth');
+
+Route::get('/auth/vk', [LoginController::class, 'loginVK'])->name('vkLogin')->middleware('guest');
+Route::get('/auth/vk/response', [LoginController::class, 'responseVK'])->name('vkResponse')->middleware('guest');
+
 
 Route::name('news.')
     ->prefix('news')
@@ -34,6 +40,9 @@ Route::name('admin.')
         Route::get('/showAllNews', [AdminIndexController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
         Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
+
+        Route::get('/parser', [ParserController::class, 'index'])->name('parser');
+
         Route::name('download.')
             ->prefix('download')
             ->group(function(){
