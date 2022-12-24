@@ -22,4 +22,18 @@ class LoginController extends Controller
         Auth::login($userInSysem);
         return redirect()->route('home');
     }
+
+    public function loginGitHub() {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function responseGitHub(UserRepository $userRepository) {
+        $user = Socialite::driver('github')->user();
+
+        dd($user);
+
+        $userInSysem = $userRepository->getUserBySocId($user, 'vk');
+        Auth::login($userInSysem);
+        return redirect()->route('home');
+    }
 }
