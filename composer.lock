@@ -6316,6 +6316,7 @@
         },
         {
             "name": "laravel/sail",
+
             "version": "v1.16.4",
             "source": {
                 "type": "git",
@@ -6372,7 +6373,8 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-12-12T16:47:37+00:00"
+
+            "time": "2022-11-21T16:19:18+00:00"
         },
         {
             "name": "mockery/mockery",

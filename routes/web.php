@@ -56,12 +56,12 @@ Route::name('admin.')
             });  
         Route::match(['get','post'],'/profile', [AdminProfileController::class,'update'] )->name('updateProfile');
 
+
         // CRUD operation           
         Route::resources([
             'news'=> AdminNewsController::class,
             'categories'=>AdminCategoryController::class
         ]);
-
         Route::get('/users', [AdminUsersController::class, 'index'])->name('users');
         Route::get('/editStatus/{user}', [AdminUsersController::class, 'editStatus'])->name('editStatus');
     });
@@ -72,6 +72,7 @@ Route::name('user.')
     ->group(function(){
         Route::match(['get','post'],'/profile', [AdminProfileController::class,'update'] )->name('profile');
 });
+
 
 Auth::routes();
 
