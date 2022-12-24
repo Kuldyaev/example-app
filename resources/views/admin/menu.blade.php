@@ -16,8 +16,15 @@
 <li class="nav-item"> 
     <my-menu></my-menu>
 </li>
+@auth
 <li class="nav-item">
-    <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index')?' active':'' }}" style="text-decoration: none">
-        Авторизация
+    <a href="{{ route('admin.updateProfile') }}" class="nav-link {{ request()->routeIs('admin.updateProfile')?' active':'' }}" style="text-decoration: none">
+       Профиль &nbsp;
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('admin.users') }}" class="nav-link {{ request()->routeIs('admin.users')?' active':'' }}" style="text-decoration: none">
+        Пользователи &nbsp;
+    </a>
+</li>
+@endauth

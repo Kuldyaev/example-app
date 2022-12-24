@@ -18,7 +18,9 @@ class CategoryController extends Controller
     public function show($slug) {
         $category = Category::query()->where('slug', $slug)->first();
 
-        $news = Category::query()->find(1)->news();
+        //dump($category->id);
+        $news = News::query()->where('category_id', $category->id)->get();
+        //dump($news);
 
         return view('news.showOneCategory')
             ->with('news', $news);
@@ -31,18 +33,18 @@ class CategoryController extends Controller
         return view('admin.createCategory', ['category' => $category]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
-        $category = new Category();
 
         $this->validate($request,[
             'name'=>'required|min:3|max:20', 
             'slug'=>'required|min:3|max:15', 
             'img'=>'required|min:3', 
         ],[],[
-                'name'=>'Название категории', 
-                'slug'=>'Slug', 
-                'img'=>'Cсылка на изображение', 
+
+            'name'=>'Название категории', 
+            'slug'=>'Slug', 
+            'img'=>'Cсылка на изображение', 
         ]);
 
         $category->fill($request->all())->save() ;
@@ -58,6 +60,20 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category) {
         $category->fill($request->all());
         $category->save();
+
+
+        $this->validate($request,[
+            'name'=>'required|min:3|max:20', 
+            'slug'=>'required|min:3|max:15', 
+            'img'=>'required|min:3', 
+        ],[],[
+            'name'=>'Название категории', 
+            'slug'=>'Slug', 
+            'img'=>'Cсылка на изображение', 
+        ]);
+        $category->fill($request->all());
+        $category->save();
+
 
         return redirect()->route('admin.categories.index')->with('success', 'Категория успешно изменена!');
     }

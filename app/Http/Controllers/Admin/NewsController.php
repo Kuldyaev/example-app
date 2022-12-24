@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Support\Facades\Auth;
 
 
 class NewsController extends Controller
@@ -34,7 +35,6 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $news = new News();
-
         $this->validate($request,[
             'title'=>'required|min:3|max:20', 
             'shortDescription'=>'required|min:3|max:250', 
@@ -62,6 +62,21 @@ class NewsController extends Controller
 
     
     public function update(Request $request, News $news) {
+        $tableNameCategory = (new Category())->getTable();
+        
+        $this->validate($request,[
+            'title'=>'required|min:3|max:20', 
+            'shortDescription'=>'required|min:3|max:250', 
+            'textInfo'=>'required|min:3', 
+            'isPrivate'=>'sometimes|in:1', 
+            'category_id'=>'required|exists:{$tableNameCategory},id'
+        ],[],[
+            'title'=>'Заголовок новости', 
+            'shortDescription'=>'Краткое описание', 
+            'textInfo'=>'Текст новости', 
+            'category_id'=>'Название категории'
+        ]);
+
 
         $news->fill($request->all());
         $news->isPrivate = isset($request->isPrivate);

@@ -7,6 +7,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\UsersController as AdminUsersController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,11 +31,11 @@ Route::name('news.')
 
 Route::name('admin.')
     ->prefix('admin')
+    ->middleware(['auth','is_admin'])
     ->group(function(){
         Route::get('/', [AdminIndexController::class, 'index'])->name('index');
         Route::get('/showAllNews', [AdminIndexController::class, 'showAllNewsForAdmin'])->name('showAllNewsForAdmin');
         Route::get('/test1', [AdminIndexController::class, 'test1'])->name('test1');
-        Route::get('/test2', [AdminIndexController::class, 'test2'])->name('test2');
         Route::name('download.')
             ->prefix('download')
             ->group(function(){
@@ -52,13 +54,25 @@ Route::name('admin.')
                     });
             
             });  
-            
+        Route::match(['get','post'],'/profile', [AdminProfileController::class,'update'] )->name('updateProfile');
+
+
         // CRUD operation           
         Route::resources([
             'news'=> AdminNewsController::class,
             'categories'=>AdminCategoryController::class
         ]);
+        Route::get('/users', [AdminUsersController::class, 'index'])->name('users');
+        Route::get('/editStatus/{user}', [AdminUsersController::class, 'editStatus'])->name('editStatus');
     });
+
+Route::name('user.')
+    ->prefix('user')
+    ->middleware('auth')
+    ->group(function(){
+        Route::match(['get','post'],'/profile', [AdminProfileController::class,'update'] )->name('profile');
+});
+
 
 Auth::routes();
 
