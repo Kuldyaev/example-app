@@ -15,9 +15,6 @@ class LoginController extends Controller
 
     public function responseVK(UserRepository $userRepository) {
         $user = Socialite::driver('vkontakte')->user();
-
-        dd($user);
-
         $userInSysem = $userRepository->getUserBySocId($user, 'vk');
         Auth::login($userInSysem);
         return redirect()->route('home');
@@ -29,8 +26,18 @@ class LoginController extends Controller
 
     public function responseGitHub(UserRepository $userRepository) {
         $user = Socialite::driver('github')->user();
-        
-        $userInSysem = $userRepository->getUserBySocId($user, 'vk');
+        $userInSysem = $userRepository->getUserBySocId($user, 'github');
+        Auth::login($userInSysem);
+        return redirect()->route('home');
+    }
+
+    public function loginGoogle() {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function responseGoogle(UserRepository $userRepository) {
+        $user = Socialite::driver('google')->user();
+        $userInSysem = $userRepository->getUserBySocId($user, 'google');
         Auth::login($userInSysem);
         return redirect()->route('home');
     }

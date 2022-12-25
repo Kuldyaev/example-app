@@ -68,6 +68,7 @@
                         <div>
                             <a href="{{ route('vkLogin') }}"><img src="vk.png" width="40" heigth="40"  alt="GitHubLogo"></a>
                             <a href="{{ route('githubLogin') }}"><img src="git.png" width="40" heigth="40" alt="VKlogo"></a>
+                            <a href="{{ route('googleLogin') }}"><img src="google.png" width="40" heigth="40" alt="VKlogo"></a>
                         </div>
                     </form>
                 </div>
