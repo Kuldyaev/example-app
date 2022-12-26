@@ -15,7 +15,14 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($news)
-                            <h2>{{ $news->title }}</h2>
+                            <div style="min-height: 150px;  display:flex;">
+                                <div style="max-width: 220px; min-width: 150px;  display:flex; justify-content:center; align-items: center;">
+                                    <div class='newImg' style="width:145px; height: 145px; background-image:url( {{ $news->image }});
+                                    background-size: 100% auto; background-repeat: no-repeat;"> 
+                                    </div>
+                                </div>
+                                <h2 style="padding: 0 10px;":>{{ $news->title }}</h2>
+                            </div>
                             <h3><i>{{ $news->shortDescription }}</i></h3>
                             <br>
                             <p>{{ $news->textInfo }}</p>

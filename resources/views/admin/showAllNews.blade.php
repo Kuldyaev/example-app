@@ -25,19 +25,24 @@
                         </div>
                         <br>
                         @foreach ($news as $item)
-                        <div class="singlenewsplace" style="width:100%; display: flex; justify-content:space-between; border: 1px solid grey; margin-bottom: 2px;" >
-                            <div style="display: flex; flex-direction: column">
+                        <div class="singlenewsplace" style="width:100%; height: 100%; display: flex; justify-content:space-between; border: 1px solid grey; margin-bottom: 2px;" >
+                            <div style="max-width: 220px; min-width: 80px;  display:flex; justify-content:center; align-items: center;">
+                                <div class='newImg' style="width:80px; height: 80px; background-image:url( {{ $item->image }});
+                                background-size: 100% auto; background-repeat: no-repeat;"> 
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; padding: 0 5px;">
                                 <a href="{{ route('admin.news.show', $item->id) }}">{{ $item->title }}</a>
                                 <p><i>{{ $item->shortDescription }}</i></p><br>
                             </div>
                             <div>
-                                <form action="{{ route('admin.news.destroy', $item) }}" method="post" style="margin-top: 10px;"> 
+                                <form action="{{ route('admin.news.destroy', $item) }}" method="post" style="margin-top: 10px; padding: 0 5px; display: flex; flex-direction: column;"> 
                                     @csrf 
                                     @method('DELETE')
-                                    <a href="{{ route('admin.news.edit', $item) }}" class="btn btn-success">
+                                    <a href="{{ route('admin.news.edit', $item) }}" class="btn btn-success" >
                                         edit
                                     </a>
-                                    <input type="submit" class="btn btn-danger" value="delete" style="margin-left: 5px;"/>
+                                    <input type="submit" class="btn btn-danger" value="delete" style="margin: 5px 0 5px 0;"/>
                                 </form>
                             </div>    
                         </div>
