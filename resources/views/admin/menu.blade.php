@@ -17,7 +17,6 @@
     <my-menu></my-menu>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index')?' active':'' }}" style="text-decoration: none">
-        Авторизация
-    </a>
+    <a class="nav-link" href="{{ route('admin.parser') }}">Парсить</a>
 </li>
+

@@ -12,10 +12,11 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title')->comment('Заголовок новости');
-            $table->string('shortDescription')->comment('Короткое описание');
+            $table->text('shortDescription')->comment('Короткое описание');
             $table->text('textInfo');
             $table->integer('category_id')->default(1);
             $table->boolean('isPrivate')->default(false);
+            $table->string('image')->default('0');
             $table->timestamps();
         });
     }

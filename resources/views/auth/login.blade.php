@@ -64,6 +64,17 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="row mb-0">
+                            <div class="socialLinksTitle" style="display:flex; justify-content:center; margin-top:25px;">login with socials</div>
+                            <div class="socialLinksBox" style="display:flex; justify-content:center; margin-top:5px;">
+                                <div class="socialLinks" style="display:flex; justify-content:space-between; max-width: 200px;">
+                                    <a href="{{ route('vkLogin') }}"><img src="vk.png" width="40" heigth="40"  alt="GitHubLogo"></a>
+                                    <a href="{{ route('githubLogin') }}"><img src="git.png" width="40" heigth="40" alt="VKlogo"></a>
+                                    <a href="{{ route('googleLogin') }}"><img src="google.png" width="40" heigth="40" alt="VKlogo"></a>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

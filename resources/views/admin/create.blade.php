@@ -69,7 +69,8 @@
                                         @endforeach
                                     </div>
                                 @endif
-                                <input type="text" id="textInfo" name="textInfo" class="form-control" value="{{ $news->textInfo ?? old('textInfo') }}">
+                                <input type="text" id="textInfo" name="textInfo" class="form-control" 
+                                value="{{ empty(old()) ? $news->textInfo : old('textInfo') }}">
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" id="newsPrivate" name="isPrivate" class="form-check-input" value="1" 
